@@ -29,18 +29,13 @@
             <textarea class="slds-textarea" id="textarea-1"></textarea>
           </div>
         </div>
-        <div class="slds-grid phl pvs slds-grid_align-center">
-          <div class="slds-col slds-size_4-of-12">
-            <button class="slds-button slds-button_brand mtl slds-align_absolute-center">Continue</button>
-          </div>
-        </div>
       </div>
-
       <div class='slds-grid phl pvs'>
         <div class='slds-col slds-size_4-of-12'></div>
         <div class='slds-col slds-size_4-of-12'>
-          <Button ref={this.continueButton} disabled={this.state.finished ? true : null} label='Continue'
-            onClick={this.submit} variant='brand' class='mtl slds-align_absolute-center' />
+          <button class="slds-button slds-button_brand mtl slds-align_absolute-center">
+            Continue
+          </button>
         </div>
         <div class='slds-col slds-size_4-of-12 slds-text-align_right'>
           <img alt='Chef Astro' src='assets/images/chefAstro.png' class='slds-size_2-of-4' />
