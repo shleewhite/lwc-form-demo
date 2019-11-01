@@ -4,15 +4,17 @@
 <head>
   <meta charset="utf-8" />
   <title>Sample Lunch Form</title>
-  <link rel="stylesheet" type="text/css" href="./css/salesforce-lightning-design-system.min.css">
-  <link rel="stylesheet" type="text/css" href="./css/index.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/salesforce-lightning-design-system.min.css">
+  <link rel="stylesheet" type="text/css" href="./assets/css/index.css">
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script src="index.js"></script>
 </head>
 
 <body class="mal">
   <div class="bg-lightGray">
     <div class='slds-clearfix horz-center slds-size_2-of-3 bg-white mauto'>
-      <img class='slds-align_absolute-center slds-size_4-of-4' alt='' src='assets/lunchBanner.png' />
+      <img class='slds-align_absolute-center slds-size_4-of-4' alt='' src='assets/images/lunchBanner.png' />
       <h1 class='slds-align_absolute-center slds-size_4-of-4 pam text-white slds-text-heading_medium bg-green'>
         Lunch Sign-Up
       </h1>
@@ -21,15 +23,15 @@
       </p>
 
       <div class='no-pointer-events pvs phl' id="root">
-        <!-- {this.renderPickupTime()}
-        {this.renderMealSelector()}
-        {this.renderDrinkSelector()}
-        {this.renderDessertSelector()} -->
-        <!-- <textarea class='ptm' id='dietary-concerns' label='Any allergies or dietary constraints?'></textarea> -->
         <div class="slds-form-element ptm">
-          <label class="slds-form-element__label" for="textarea-id-01">Any allergies or dietary constraints?</label>
+          <label class="slds-form-element__label" for="textarea-1">Any allergies or dietary constraints?</label>
           <div class="slds-form-element__control">
-            <textarea class="slds-textarea"></textarea>
+            <textarea class="slds-textarea" id="textarea-1"></textarea>
+          </div>
+        </div>
+        <div class="slds-grid phl pvs slds-grid_align-center">
+          <div class="slds-col slds-size_4-of-12">
+            <button class="slds-button slds-button_brand mtl slds-align_absolute-center">Continue</button>
           </div>
         </div>
       </div>
@@ -41,12 +43,116 @@
             onClick={this.submit} variant='brand' class='mtl slds-align_absolute-center' />
         </div>
         <div class='slds-col slds-size_4-of-12 slds-text-align_right'>
-          <img alt='Chef Astro' src='assets/chefAstro.png' class='slds-size_2-of-4' />
+          <img alt='Chef Astro' src='assets/images/chefAstro.png' class='slds-size_2-of-4' />
         </div>
       </div>
-
     </div>
   </div>
+
+  <!-- template of inaccessible form -->
+  <template id="not-a11y">
+    <fieldset class="slds-form-element">
+      <legend class="slds-form-element__legend slds-form-element__label">
+        <abbr class="slds-required" title="required">*</abbr>
+        Pick-up Time
+      </legend>
+      <div class="slds-form-element__control">
+        <span class="slds-radio">
+          <input type="radio" id="no-radio-1" value="no-radio-1" name="options" />
+          <label class="slds-radio__label" for="no-radio-1">
+            <span class="slds-radio_faux"></span>
+            <span class="slds-form-element__label">11:00</span>
+          </label>
+        </span>
+        <span class="slds-radio">
+          <input type="radio" id="no-radio-2" value="no-radio-2" name="options" />
+          <label class="slds-radio__label" for="no-radio-2">
+            <span class="slds-radio_faux"></span>
+            <span class="slds-form-element__label">11:30</span>
+          </label>
+        </span>
+        <span class="slds-radio">
+          <input type="radio" id="no-radio-3" value="no-radio-3" name="options" />
+          <label class="slds-radio__label" for="no-radio-3">
+            <span class="slds-radio_faux"></span>
+            <span class="slds-form-element__label">12:00</span>
+          </label>
+        </span>
+        <span class="slds-radio">
+          <input type="radio" id="no-radio-4" value="no-radio-4" name="options" />
+          <label class="slds-radio__label" for="no-radio-4">
+            <span class="slds-radio_faux"></span>
+            <span class="slds-form-element__label">12:30</span>
+          </label>
+        </span>
+      </div>
+    </fieldset>
+    <div class="slds-form-element">
+      <label class="slds-form-element__label" for="combobox-id-1">
+        <abbr class="slds-required" title="required">*</abbr>
+        Meal
+      </label>
+      <div class="slds-form-element__control">
+        <div class="slds-combobox_container">
+          <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false"
+            aria-haspopup="listbox" role="combobox">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+              <input type="text" class="slds-input slds-combobox__input" id="combobox-id-1" aria-controls="listbox-id-1"
+                autoComplete="off" role="textbox" placeholder="Select an Option" />
+              <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slds-form-element">
+      <label class="slds-form-element__label" for="combobox-id-1">
+        <abbr class="slds-required" title="required">*</abbr>
+        Drink
+      </label>
+      <div class="slds-form-element__control">
+        <div class="slds-combobox_container">
+          <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false"
+            aria-haspopup="listbox" role="combobox">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+              <input type="text" class="slds-input slds-combobox__input" id="combobox-id-1" aria-controls="listbox-id-1"
+                autoComplete="off" role="textbox" placeholder="Select an Option" />
+              <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slds-form-element">
+      <label class="slds-form-element__label" for="combobox-id-1">
+        Dessert
+      </label>
+      <div class="slds-form-element__control">
+        <div class="slds-combobox_container">
+          <div class="slds-combobox slds-dropdown-trigger slds-dropdown-trigger_click" aria-expanded="false"
+            aria-haspopup="listbox" role="combobox">
+            <div class="slds-combobox__form-element slds-input-has-icon slds-input-has-icon_right" role="none">
+              <input type="text" class="slds-input slds-combobox__input" id="combobox-id-1" aria-controls="listbox-id-1"
+                autoComplete="off" role="textbox" placeholder="Select an Option" />
+              <span class="slds-icon_container slds-icon-utility-down slds-input__icon slds-input__icon_right">
+                <svg class="slds-icon slds-icon slds-icon_x-small slds-icon-text-default" aria-hidden="true">
+                  <use xlink:href="/assets/icons/utility-sprite/svg/symbols.svg#down"></use>
+                </svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </template>
 </body>
 
 </html>
